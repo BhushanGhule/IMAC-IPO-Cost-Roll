@@ -1,0 +1,74 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form"
+	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<VBox class="sapUiSmallMargin sapUiNoContentPadding">
+		<f:Form editable="true" class="sapUiNoMargin sapUiNoContentPadding">
+			<f:layout class="sapUiNoMargin sapUiNoContentPadding">
+				<f:ResponsiveGridLayout labelSpanXL="2" labelSpanL="2" labelSpanM="2" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true"
+					class="sapUiNoMargin sapUiNoContentPadding"/>
+			</f:layout>
+			<f:formContainers class="sapUiNoMargin sapUiNoContentPadding">
+				<f:FormContainer class="sapUiNoMargin sapUiNoContentPadding">
+					<f:formElements class="sapUiNoMargin sapUiNoContentPadding">
+						<f:FormElement label="{i18n>RequestType}">
+							<f:fields>
+								<ComboBox id="RequestTypeid" showSecondaryValues="true" filterSecondaryValues="true" items="{ path: 'oDataModelNGD>/RequestTypeSet' }"
+									selectedKey="{defaultValueModel>/DetailHeader/RequestTypeID}" change="onSuggestionItemSelected" custom:to="RequestType">
+									<core:ListItem key="{oDataModelNGD>RequestTypeID}" text="{oDataModelNGD>RequestTypeDesc}" additionalText="{oDataModelNGD>RequestTypeID}"/>
+									<layoutData>
+										<l:GridData span="XL3 L3 M3 S12"/>
+									</layoutData>
+ 								</ComboBox>
+								<Text text="{defaultValueModel>/DetailHeader/RequestTypeID}">
+									<layoutData>
+										<l:GridData span="XL1 L1 M1 S12"/>
+									</layoutData>
+								</Text>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{i18n>ReasonCode}">
+							<f:fields>
+								<ComboBox id="ReasonCodeid" showSecondaryValues="true" filterSecondaryValues="true" items="{ path: 'defaultValueModel>/ReasonCodeList' }"
+									selectedKey="{defaultValueModel>/DetailHeader/ReasonCodeID}" 
+									change="onSuggestionItemSelected" custom:to="ReasonCode">
+									<core:ListItem key="{defaultValueModel>ReasonCodeID}" text="{defaultValueModel>ReasonCodeDesc}"
+										additionalText="{defaultValueModel>ReasonCodeID}"/>
+									<layoutData>
+										<l:GridData span="XL3 L3 M3 S12"/>
+									</layoutData>
+								</ComboBox>
+								<Text text="{defaultValueModel>/DetailHeader/ReasonCodeID}">
+									<layoutData>
+										<l:GridData span="XL1 L1 M1 S12"/>
+									</layoutData>
+								</Text>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{i18n>PostingPlant}">
+							<f:fields>
+								<ComboBox id="PostingPlantid" showSecondaryValues="true" filterSecondaryValues="true" items="{ path: 'oDataModelNGD>/PostingPlantSet' }"
+									selectedKey="{defaultValueModel>/DetailHeader/PostingPlant}" change="onSuggestionItemSelected" custom:to="PostingPlant">
+									<core:ListItem key="{oDataModelNGD>PostPlant}" text="{oDataModelNGD>PostPlant}"/>
+									<layoutData>
+										<l:GridData span="XL3 L3 M3 S12"/>
+									</layoutData>
+								</ComboBox>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{i18n>MfgPlant}">
+							<f:fields>
+								<ComboBox id="MfgPlantid" showSecondaryValues="true" filterSecondaryValues="true" items="{ path: 'oDataModelNGD>/MfgPlantSet' }"
+									selectedKey="{defaultValueModel>/DetailHeader/MfgPlant}" change="onSuggestionItemSelected" custom:to="MfgPlant">
+									<core:ListItem key="{oDataModelNGD>ManufacturingPlant}" text="{oDataModelNGD>ManufacturingPlant}"/>
+									<layoutData>
+										<l:GridData span="XL3 L3 M3 S12"/>
+									</layoutData>
+								</ComboBox>
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+	</VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,52 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns:smartForm="sap.ui.comp.smartform" xmlns:smartField="sap.ui.comp.smartfield" id="detailsFormPopUp">
+	<Dialog title="Details" class="sapUiPopupWithPadding" draggable="true" contentHeight="560px" contentWidth="680px"
+		afterClose="detailsAfterclose">
+		<VBox class="sapUiSmallMargin">
+			<f:SimpleForm id="detailsForm" editable="false" layout="ResponsiveGridLayout" title="Material Details" labelSpanXL="5" labelSpanL="5"
+				labelSpanM="5" labelSpanS="5" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1"
+				columnsL="1" columnsM="1" singleContainerFullSize="true">
+				<f:content>
+					<Label text="{i18n>PartNo}"/>
+					<Text text="{defaultValueModel>PartNo}"/>
+					<Label text="{i18n>Supplier2}"/>
+					<Text text="{defaultValueModel>SupplierName}-{defaultValueModel>SupplierNameText}"/>
+					<Label text="{i18n>MPN}"/>
+					<Text text="{defaultValueModel>MPN}"/>
+					<Label text="{i18n>CostRollPrice2}"/>
+					<Text text="{defaultValueModel>CostRollPrice}"/>
+					<Label text="{i18n>Source2}"/>
+					<Text text="{defaultValueModel>Source}"/>
+					<Label text="{i18n>QA}"/>
+					<Text text="{defaultValueModel>QA}"/>
+					<Label text="{i18n>CommonPart} {defaultValueModel>/DetailHeader/PostingPlant}"/>
+					<Text text="{defaultValueModel>CommonPart}"/>
+					<Label text="{i18n>ProfitCenter}"/>
+					<Text text="{defaultValueModel>SGProfitCenter}"/>
+					<Label text="{i18n>MFGSiteIRPrice}"/>
+					<Text text="{defaultValueModel>MFGSiteIRPrice}"/>
+					<Label text="{i18n>MFGIRPricePer}"/>
+					<Text text="{defaultValueModel>MFGIRPricePer}"/>
+					<Label text="{i18n>ExistingMfgSiteStdCost}"/>
+					<Text text="{defaultValueModel>ExistingMfgSiteStdCost}"/>
+					<Label text="{i18n>ExistingMfgSiteStdCostPer}"/>
+					<Text text="{defaultValueModel>ExistingMfgSiteStdCostPer}"/>
+					<Label text="{i18n>ExistingSG03SG05StdCost}"/>
+					<Text text="{defaultValueModel>ExistingSG03SG05StdCost}"/>
+					<Label text="{i18n>ExistingSG03SG05StdCostPer}"/>
+					<Text text="{defaultValueModel>ExistingSG03SG05StdCostPer}"/>
+					<Label text="{i18n>ExistingSG03SG05PlannedPrice}"/>
+					<Text text="{defaultValueModel>ExistingSG03SG05PlannedPrice}"/>
+					<Label text="{i18n>FuturePrice}"/>
+					<Text text="{defaultValueModel>FuturePrice}"/>
+					<Label text="{i18n>FuturePriceDate}"/>
+					<Text text="{path:'defaultValueModel>FuturePriceDate', type:'sap.ui.model.type.Date', formatOptions : { pattern: 'MM/dd/yyyy', UTC: true}}"/>
+				</f:content>
+			</f:SimpleForm>
+		</VBox>
+		<endButton>
+			<Button press="onCloseDetails" id="CancelPartner" activeIcon="sap-icon://sys-cancel" iconDensityAware="false" icon="sap-icon://sys-cancel"
+				type="Reject"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

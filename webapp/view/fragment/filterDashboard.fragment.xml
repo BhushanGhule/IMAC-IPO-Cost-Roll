@@ -1,0 +1,105 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:table="sap.ui.table">
+	<Dialog contentWidth="auto">
+		<customHeader>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Title text="{i18n>DashboadFilter}" level="H2"/>
+				<ToolbarSpacer/>
+				<Button icon="sap-icon://decline" press="onDialogDeclinePress" ariaLabelledBy="editButtonLabel"/>
+			</Toolbar>
+		</customHeader>
+		<f:Form editable="true" class="sapUiNoMargin sapUiNoContentPadding">
+			<f:layout class="sapUiNoMargin sapUiNoContentPadding">
+				<f:ResponsiveGridLayout labelSpanXL="2" labelSpanL="2" labelSpanM="2" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true"
+					class="sapUiNoMargin sapUiNoContentPadding"/>
+			</f:layout>
+			<f:formContainers class="sapUiNoMargin sapUiNoContentPadding">
+				<f:FormContainer class="sapUiNoMargin sapUiNoContentPadding">
+					<f:FormElement label="{i18n>RequestedDateRange}">
+						<f:fields>
+							<DateRangeSelection change="handleDateSelection" value="{defaultValueModel>/DashboardFilter/DateValue}"
+								valueState="{= ${fieldHandlingModel>/EnableFilters} === true ? 'None' : 'Error' }" valueStateText="Mandatory field"
+								maxDate="{defaultValueModel>/MaxDateForDateRange}"
+								minDate="{defaultValueModel>/MinDateForDateRange}" showFooter="true" valueFormat="yyyyMMdd" displayFormat="MM/dd/yyyy">
+								<layoutData>
+									<l:GridData span="XL3 L3 M3 S12"/>
+								</layoutData>
+							</DateRangeSelection>
+						</f:fields>
+					</f:FormElement>
+					<f:formElements class="sapUiNoMargin sapUiNoContentPadding">
+						<f:FormElement label="{i18n>RequestorName}">
+							<f:fields>
+								<Input value="{defaultValueModel>/DashboardFilter/RequestorName}"
+									enabled="{= ${fieldHandlingModel>/EnableFilters} === true ? true : false }" valueHelpOnly="true"
+									showValueHelp="true" valueHelpRequest="handleRequesterNameSearchHelp">
+									<layoutData>
+										<l:GridData span="XL3 L3 M3 S12"/>
+									</layoutData>
+								</Input>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{i18n>IDOCNumber}">
+							<f:fields>
+								<Input value="{defaultValueModel>/DashboardFilter/IdocNum}" enabled="{= ${fieldHandlingModel>/EnableFilters} === true ? true : false }">
+									<layoutData>
+										<l:GridData span="XL3 L3 M3 S12"/>
+									</layoutData>
+								</Input>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{i18n>RequestDate}" visible="false">
+							<f:fields>
+								<DatePicker value="{defaultValueModel>/DashboardFilter/CreationDate}"
+									enabled="{= ${fieldHandlingModel>/EnableFilters} === true ? true : false }"
+									valueFormat="MM/dd/yyyy" displayFormat="MM/dd/yyyy">
+									<layoutData>
+										<l:GridData span="XL3 L3 M3 S12"/>
+									</layoutData>
+								</DatePicker>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{i18n>MaterialNumber}">
+							<f:fields>
+								<Input value="{defaultValueModel>/DashboardFilter/MaterialNum}" enabled="{= ${fieldHandlingModel>/EnableFilters} === true ? true : false }">
+									<layoutData>
+										<l:GridData span="XL3 L3 M3 S12"/>
+									</layoutData>
+								</Input>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{i18n>PONumber}">
+							<f:fields>
+								<Input value="{defaultValueModel>/DashboardFilter/PONumber}" enabled="{= ${fieldHandlingModel>/EnableFilters} === true ? true : false }">
+									<layoutData>
+										<l:GridData span="XL3 L3 M3 S12"/>
+									</layoutData>
+								</Input>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{i18n>PostingDate}">
+							<f:fields>
+								<DatePicker value="{defaultValueModel>/DashboardFilter/PostOrShipDate}"
+									enabled="{= ${fieldHandlingModel>/EnableFilters} === true ? true : false }"
+									valueFormat="MM/dd/yyyy" displayFormat="MM/dd/yyyy">
+									<layoutData>
+										<l:GridData span="XL3 L3 M3 S12"/>
+									</layoutData>
+								</DatePicker>
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<!--<footer>-->
+		<Toolbar>
+			<ToolbarSpacer/>
+			<Button type="Accept" width="10em" text="{i18n>Search}" enabled="{= ${fieldHandlingModel>/EnableFilters} === true ? true : false }"
+				press="onMyDashboadSearchPress"/>
+		</Toolbar>
+		<!--</footer>-->
+	</Dialog>
+</core:FragmentDefinition>

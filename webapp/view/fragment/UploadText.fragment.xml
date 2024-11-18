@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" id="hlFlex1">
+	<Dialog title="Upload File" class="sapUiPopupWithPadding" draggable="true" contentHeight="395px" contentWidth="865px" afterClose="onTextAfterclose">
+		<VBox class="sapUiSmallMargin" width="800px" height="300px">
+			<TextArea id="iTextUpload" width="800px" height="300px"></TextArea>
+		</VBox>
+		<beginButton>
+			<Button press="onUploadText"  id="onUploadText" activeIcon="sap-icon://accept" icon="sap-icon://accept" type="Accept"/>
+		</beginButton>
+		<endButton>
+			<Button press="onCloseUpload" id="CancelPartner" activeIcon="sap-icon://sys-cancel" iconDensityAware="false" icon="sap-icon://sys-cancel"
+				type="Reject"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

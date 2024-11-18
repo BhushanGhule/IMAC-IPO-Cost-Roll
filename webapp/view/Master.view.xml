@@ -1,0 +1,16 @@
+<mvc:View controllerName="CostRoll.Z_FICO_IMACIPO_CR.controller.Master" displayBlock="true" height="100%" xmlns="sap.m" xmlns:f="sap.f"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core">
+	<f:DynamicPage id="dynamicPageId" toggleHeaderOnTitleClick="false" visible="true">
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading></f:heading>
+				<f:actions>
+					<ToggleButton icon="sap-icon://work-history" text="{i18n>MyDashboard}" enabled="true" pressed="false" press="onShowDashboard"/>
+				</f:actions>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:content >
+			<core:Fragment fragmentName="CostRoll.Z_FICO_IMACIPO_CR.view.fragment.MyInboxTable" type="XML" class="sapUiNoMargin sapUiNoContentPadding" />
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>

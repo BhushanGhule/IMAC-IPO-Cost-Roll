@@ -1,0 +1,55 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZOD_FICO_IMACIPO_CR_SRV" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="RequestType" sap:content-version="1">
+				<Key><PropertyRef Name="RequestTypeID"/><PropertyRef Name="RequestTypeDesc"/></Key><Property Name="RequestTypeID" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="RequestID"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="RequestTypeDesc" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="ReqestDescription"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DeletionInd" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="DeletionIndicator"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ReasonCode" sap:content-version="1">
+				<Key><PropertyRef Name="RequestTypeID"/></Key><Property Name="RequestTypeID" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="RequestTypeID"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ReasonCodeID" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ReasonCodeID"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ReasonCodeDesc" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="ReasonDescription"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DeletionInd" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="DeletionIndicator"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="WorkItem" sap:content-version="1">
+				<Key><PropertyRef Name="Reqnum"/></Key><Property Name="Reqnum" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="RequestNumber"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="WiId" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="WorkItemID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="MyInbox" sap:content-version="1">
+				<Key><PropertyRef Name="RequestNumber"/></Key><Property Name="RequestNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="RequestTypeID" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Request Type"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="RequestTypeDesc" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="ReqestTypeDescription"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CreationDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Creation Date" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="MFGPlant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Manufacturing Plant"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="RequestStatusID" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Request Status"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="RequestStatusDesc" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="ReqStatus Description"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="QueueOwner" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Queue Owner" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="MyDashboard" sap:content-version="1">
+				<Key><PropertyRef Name="RequestNumber"/></Key><Property Name="RequestNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="RequestTypeID" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ReqTypeDescript" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Time Stamp" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="RequestorName" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created By"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="RequestItemNumber" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="PartNumber" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Supplier" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="MPN" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="CostRollPrice" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Source" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="QA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="CommonPart" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Detail" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="LastStatusID" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="StatusDesc" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityContainer Name="ZOD_FICO_IMACIPO_CR_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="RequestTypeSet" EntityType="ZOD_FICO_IMACIPO_CR_SRV.RequestType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ReasonCodeSet" EntityType="ZOD_FICO_IMACIPO_CR_SRV.ReasonCode" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="WorkItemSet" EntityType="ZOD_FICO_IMACIPO_CR_SRV.WorkItem" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="MyInboxSet" EntityType="ZOD_FICO_IMACIPO_CR_SRV.MyInbox" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="MyDashboardSet" EntityType="ZOD_FICO_IMACIPO_CR_SRV.MyDashboard" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/></EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZOD_FICO_IMACIPO_CR_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZOD_FICO_IMACIPO_CR_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

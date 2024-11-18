@@ -1,0 +1,18 @@
+{
+	"DateRangeSelectionEditable": false,
+	"EnableFilters": false,
+	"RefreshScreen": true,
+	"DontUpload": false,
+	"VisibleIdocColumn": true,
+	"VisibleButtons": false,
+	"displayNotes": false,
+	"Submit": false,
+	"Withdraw": false,
+	"MaterialHeader": false,
+	"PostingStatus": false,
+	"showMyDashboard": false,
+	"showMyInbox": true,
+	"SendEmail": false,
+	"Draft": false,
+	"UserDetails": {}
+}

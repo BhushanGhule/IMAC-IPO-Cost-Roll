@@ -1,0 +1,70 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<VBox>
+		<Table id="MyInboxTable" visible="{= ${fieldHandlingModel>/showMyInbox} === true ? true : false }" inset="false" contextualWidth="Auto"
+			fixedLayout="false" items="{tableEntriesModel>/MyInboxSet}" class="sapFDynamicPageAlignContent" width="auto"
+			sticky="ColumnHeaders,HeaderToolbar">
+			<headerToolbar>
+				<OverflowToolbar>
+					<Title text="My Inbox ({tableEntriesModel>/MyInboxSetLength})"/>
+					<ToolbarSpacer/>
+					<SearchField liveChange="onSearch" width="17.5rem"/>
+					<OverflowToolbarButton icon="sap-icon://add" text="create" press="onAdd"
+						visible="{= ${fieldHandlingModel>/UserDetails/Buyer} === true ? true : false }"/>
+					<OverflowToolbarButton icon="sap-icon://sort" type="Transparent" press="onSort"/>
+					<OverflowToolbarButton icon="sap-icon://refresh" type="Transparent" press="onRefreshMyInbox"/>
+				</OverflowToolbar>
+			</headerToolbar>
+			<columns demandPopin="true">
+				<Column hAlign="Center">
+					<Text text="{i18n>RequestNumber}"/>
+				</Column>
+				<Column demandPopin="true">
+					<Text text="{i18n>RequestType}"/>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" popinDisplay="Inline">
+					<Text text="{i18n>CreationDate}"/>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" popinDisplay="Inline">
+					<Text text="{i18n>MfgPlant}"/>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+					<Text text="{i18n>RequestorName}"/>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+					<Text text="{i18n>Status}"/>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+					<Text text="{i18n>QueueOwner}"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem type="Navigation" press="onListItemPress">
+					<cells>
+						<ObjectIdentifier title="{= parseFloat(${tableEntriesModel>RequestNumber}) }"/>
+						<Text text="{tableEntriesModel>RequestTypeDesc}"/>
+						<Text text="{ path: 'tableEntriesModel>CreationDate' , type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'MM/dd/yyyy' } }"/>
+						<Text text="{tableEntriesModel>MFGPlant}"/>
+						<Text text="{tableEntriesModel>Requestorname}"/>
+						<Text text="{tableEntriesModel>RequestStatusDesc}"/>
+						<Link text="{tableEntriesModel>QueueOwner}" tooltip="{tableEntriesModel>AllApprover}" press="onLinkClick"
+							enabled="{= ${tableEntriesModel>RequestStatusID} === '003' || ${tableEntriesModel>RequestStatusID} === '002' ? true : false }"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<smartFilterBar:SmartFilterBar id="DashboardSmartFilter" entitySet="ZFICO_C_CR_DASH" persistencyKey="DashboardCostRollKeyFilter"
+			useToolbar="true" visible="{= ${fieldHandlingModel>/showMyDashboard} === true ? true : false }"></smartFilterBar:SmartFilterBar>
+		<smartTable:SmartTable id="DashboardSmartTable" entitySet="ZFICO_C_CR_DASH" smartFilterId="DashboardSmartFilter" tableType="ResponsiveTable"
+			useVariantManagement="true" useTablePersonalisation="true" header="Dashboard Requests" showRowCount="true"
+			class="sapUiResponsiveContentPadding" persistencyKey="DashboardCostRollKeyLayout" enableAutoBinding="false"
+			beforeRebindTable="onBeforeRebindTable" fitContainer="true" exportType="UI5Client" beforeExport="onBeforeExport"
+			initiallyVisibleFields="Reqnum,RequestTypeDesc,CreatedOn,RequestorName,Seqnum,PartNo,Supplier,Bmatn,CostrollPrice,Source,Qa,CommonPart,Author"
+			visible="{= ${fieldHandlingModel>/showMyDashboard} === true ? true : false }" demandPopin="true">
+			<Table inset="false" class="sapFDynamicPageAlignContent" sticky="ColumnHeaders,HeaderToolbar" mode="SingleSelectMaster" growing="true"
+				growingThreshold="100" growingScrollToLoad="true" itemPress="onDashboardItemSelect">
+				<ColumnListItem type="Navigation"></ColumnListItem>
+			</Table>
+		</smartTable:SmartTable>
+	</VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,58 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+	<Table inset="false" class="sapFDynamicPageAlignContent" width="auto" contextualWidth="Auto" fixedLayout="false"
+		items="{path: 'defaultValueModel>/RequestItem', factory: '.formatter.factory', sorter: { path: 'SequenceNumber', ascending: true} }"
+		mode="{= ${fieldHandlingModel>/createRequest} === true ? 'Delete' : 'None' }" delete="deleteMaterial" id="tMaterialList"
+		growingThreshold="100" growingScrollToLoad="true" growing="true" enableBusyIndicator="true" busyIndicatorDelay="0" selectionChange="handleSelectionChange">
+		<headerToolbar>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<OverflowToolbarButton id="iNewRow" icon="sap-icon://add" text="{i18n>NewRow}" press="onNewRowPress" tooltip="{i18n>tNewRow}"
+					visible="{= ${fieldHandlingModel>/createRequest} === true ? true : false }"/>
+				<OverflowToolbarButton id="iValidate" icon="sap-icon://process" text="{i18n>Validate}" press="onValidate" tooltip="{i18n>ValidateAll}"
+					visible="{= ${fieldHandlingModel>/createRequest} === true ? true : false }"/>
+				<OverflowToolbarButton id="iUploadData" icon="sap-icon://upload" text="{i18n>Upload}" press="onUploadDataPress" tooltip="{i18n>tUpload}"
+					visible="{= ${fieldHandlingModel>/createRequest} === true ? true : false }"/>
+				<OverflowToolbarButton id="iDownloadTemplate" icon="sap-icon://download" text="{i18n>DownloadTemplate}" press="onDownloadTemplate"
+					tooltip="{i18n>DownloadTemplate}" visible="{= ${fieldHandlingModel>/createRequest} === true ? true : false }"/>
+				<OverflowToolbarButton id="iDeleteAll" icon="sap-icon://delete" text="{i18n>DeleteAll}" press="onDeleteAll" tooltip="{i18n>DeleteAll}"
+					visible="{= ${fieldHandlingModel>/createRequest} === true ? true : false }"/>
+				<OverflowToolbarButton id="iDownloadExcel" icon="sap-icon://excel-attachment" text="{i18n>tDownloadExcel}" press="onDownloadExcel"
+					tooltip="{i18n>tDownloadExcel}" visible="true"/>
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+			<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center" width="auto">
+				<Text text="{i18n>PartNo}"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center" width="auto">
+				<Text text="{i18n>Supplier}"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center" width="auto">
+				<Text text="{i18n>MPN}"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center" width="auto">
+				<Text text="{i18n>CostRollPrice}"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center" width="auto">
+				<Text text="{i18n>Source}"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center" width="auto">
+				<Text text="{i18n>QA}"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center" width="auto">
+				<Text text="{i18n>CommonPart} {defaultValueModel>/DetailHeader/PostingPlant}"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center" width="auto"
+				visible="{= ${fieldHandlingModel>/displayNotes} === true ? true : false }">
+				<Text text="{i18n>ValidateNotes}"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center" width="auto"
+				visible="{= ${fieldHandlingModel>/PostingStatus} === true ? true : false }">
+				<Text text="{i18n>PostingStatus}"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center" width="auto">
+				<Text text="{i18n>Detail}"/>
+			</Column>
+		</columns>
+	</Table>
+</core:FragmentDefinition>

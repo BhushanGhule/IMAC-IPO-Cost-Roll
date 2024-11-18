@@ -1,0 +1,106 @@
+<mvc:View controllerName="CostRoll.Z_FICO_IMACIPO_CR.controller.Detail" height="100%" xmlns="sap.uxap" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:m="sap.m" xmlns:f="sap.f" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+	<ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false"
+		headerContentPinnable="true" isChildPage="true" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="{defaultValueModel>/HeaderTitle}" wrapping="true" class="sapUiSmallMarginEnd"/>
+				</expandedHeading>
+				<snappedHeading>
+					<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Center">
+						<m:FlexBox wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
+							<f:Avatar src="../../../../../../../{products>ProductPicUrl}" displaySize="S" displayShape="Square"/>
+							<m:Title text="{products>Name}" wrapping="true" class="sapUiTinyMarginEnd"/>
+						</m:FlexBox>
+					</m:FlexBox>
+				</snappedHeading>
+				<navigationActions>
+					<m:OverflowToolbarButton type="Transparent" icon="sap-icon://full-screen" press="handleFullScreen" id="enterFullScreenBtn"
+						tooltip="Enter Full Screen Mode" visible="{= ${/actionButtonsInfo/midColumn/fullScreen} !== null }"/>
+					<m:OverflowToolbarButton type="Transparent" icon="sap-icon://exit-full-screen" press="handleExitFullScreen" id="exitFullScreenBtn"
+						tooltip="Exit Full Screen Mode" visible="{= ${/actionButtonsInfo/midColumn/exitFullScreen} !== null }"/>
+					<m:OverflowToolbarButton type="Transparent" icon="sap-icon://decline" press="handleClose" tooltip="Close column"
+						visible="{= ${/actionButtonsInfo/midColumn/closeColumn} !== null }"/>
+				</navigationActions>
+				<actions>
+					<m:Button text="{i18n>Create}" type="Accept" press="onCreatePress" visible="{= ${fieldHandlingModel>/createRequestBut}}"/>
+					<m:Button text="{i18n>Draft}" type="Accept" press="onDraftPress" visible="{= ${fieldHandlingModel>/Draft}}"/>
+					<m:Button text="{i18n>SendEmail}" type="Accept" icon="sap-icon://email" press="onSendEmail" visible="{= ${fieldHandlingModel>/SendEmail}}"/>
+					<m:Button text="{i18n>Post}" type="Accept" press="onPostPress" visible="{= ${fieldHandlingModel>/Post}}"/>
+					<m:Button text="{i18n>Approve}" type="Accept" press="onApprovePress" visible="{= ${fieldHandlingModel>/Approver}}"/>
+					<m:Button text="{i18n>Reject}" type="Reject" press="onRejectPress" visible="{= ${fieldHandlingModel>/Rejecter}}"/>
+					<m:Button text="{i18n>ForceClose}" type="Reject" press="onForceClose" visible="{= ${fieldHandlingModel>/ForceClose}}"/>
+					<m:Button text="{i18n>Close}" type="Accept" press="onClosePress" visible="{= ${fieldHandlingModel>/Close}}"/>
+					<m:Button text="{i18n>Submit}" type="Accept" press="onSubmitPress" visible="{= ${fieldHandlingModel>/Submit}}"/>
+					<m:Button text="{i18n>Withdraw}" type="Reject" press="onWithdrawPress" visible="{= ${fieldHandlingModel>/Withdraw}}"/>
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		<headerContent>
+			<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch" justifyContent="SpaceBetween">
+				<l:VerticalLayout class="sapUiSmallMarginEnd">
+					<m:ObjectStatus title="{i18n>RequestType}" text="{defaultValueModel>/DetailHeader/RequestTypeDesc}"/>
+					<m:ObjectStatus title="{i18n>ReasonCode}" text="{defaultValueModel>/DetailHeader/ReasonCodeDesc}"/>
+					<m:ObjectStatus title="{i18n>PostingPlant}" text="{defaultValueModel>/DetailHeader/PostingPlant}"/>
+					<m:ObjectStatus title="{i18n>MfgPlant}" text="{defaultValueModel>/DetailHeader/MfgPlant}"/>
+					<m:ObjectStatus title="{i18n>CostingDate}"
+						text="{ path: 'defaultValueModel>/DetailHeader/CostingDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'MM/dd/yyyy' } }"/>
+				</l:VerticalLayout>
+				<l:VerticalLayout class="sapUiSmallMarginEnd">
+					<m:ObjectStatus title="{i18n>Status}" text="{defaultValueModel>/DetailHeader/StatusDesc}" state="Information"/>
+					<m:ObjectStatus title="{i18n>LastUpdate}"
+						text="{ path: 'defaultValueModel>/DetailHeader/ChangeDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'MM/dd/yyyy' } }"/>
+					<m:ObjectStatus title="{i18n>LastUpdatedBy}" text="{defaultValueModel>/DetailHeader/ChgUserName}"/>
+				</l:VerticalLayout>
+			</m:FlexBox>
+		</headerContent>
+		<sections>
+			<ObjectPageSection id="MaterialHeader" title="{i18n>Header}" visible="{= ${fieldHandlingModel>/MaterialHeader}}">
+				<subSections class="sapUiNoMargin sapUiNoContentPadding">
+					<ObjectPageSubSection class="sapUiNoMargin sapUiNoContentPadding">
+						<blocks class="sapUiNoMargin sapUiNoContentPadding">
+							<core:Fragment fragmentName="CostRoll.Z_FICO_IMACIPO_CR.view.fragment.MaterialHeader" type="XML" class="sapUiNoMargin sapUiNoContentPadding"/>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection id="MaterialLst" title="{i18n>MaterialList}">
+				<subSections>
+					<ObjectPageSubSection>
+						<blocks>
+							<core:Fragment fragmentName="CostRoll.Z_FICO_IMACIPO_CR.view.fragment.MaterialList" type="XML"/>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection title="{i18n>Overview}">
+				<subSections>
+					<ObjectPageSubSection>
+						<blocks>
+							<core:Fragment fragmentName="CostRoll.Z_FICO_IMACIPO_CR.view.fragment.Overview" type="XML"/>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection title="{i18n>Attachment}">
+				<subSections>
+					<ObjectPageSubSection>
+						<blocks>
+							<core:Fragment fragmentName="CostRoll.Z_FICO_IMACIPO_CR.view.fragment.Attachment" type="XML"/>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection title="{i18n>Audit}">
+				<subSections>
+					<ObjectPageSubSection>
+						<blocks>
+							<core:Fragment fragmentName="CostRoll.Z_FICO_IMACIPO_CR.view.fragment.Audit" type="XML"/>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+</mvc:View>

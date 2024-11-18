@@ -1,0 +1,35 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
+	<Table inset="false" items="{ path: 'defaultValueModel>/CaseContentItems', sorter: { path: 'timestamp', descending: true}}"
+		class="sapFDynamicPageAlignContent" width="auto">
+		<headerToolbar>
+			<OverflowToolbar>
+				<Title text="Case Content"/>
+				<ToolbarSpacer/>
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="{i18n>Status}"/>
+			</Column>
+			<Column>
+				<Text text="{i18n>CompletionDate}"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+				<Text text="{i18n>Remarks}"/>
+			</Column>
+			<Column>
+				<Text text="{i18n>PerformedBy}"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectIdentifier title="{defaultValueModel>StatusDesc}"/>
+					<Text text="{ path: 'defaultValueModel>timestamp' , type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'MM/dd/yyyy HH:mm' } }"/>
+					<Text text="{defaultValueModel>Description}"/>
+					<Text text="{defaultValueModel>ChgUserName}"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

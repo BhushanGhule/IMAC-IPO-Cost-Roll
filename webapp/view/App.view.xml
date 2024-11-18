@@ -1,0 +1,12 @@
+<mvc:View 
+controllerName="CostRoll.Z_FICO_IMACIPO_CR.controller.App" 
+xmlns:mvc="sap.ui.core.mvc" 
+height="100%" 
+displayBlock="true" 
+xmlns="sap.f">
+	<FlexibleColumnLayout
+		id="costroll"
+		stateChange="onStateChanged"
+		backgroundDesign="Translucent"
+		layout="{/layout}"/>
+</mvc:View>

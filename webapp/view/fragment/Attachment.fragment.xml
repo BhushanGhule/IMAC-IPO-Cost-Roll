@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
+	<UploadCollection uploadEnabled="false" items="{ path: 'defaultValueModel>/AttachmentList' }" fileDeleted="onFileDeletePress">
+		<toolbar>
+			<OverflowToolbar id="myId">
+				<Title visible="{defaultValueModel>/AttahmentUploadVisibility}"
+					text="{defaultValueModel>/AttahmentUploadCounter} more attachments can be uploaded.(Types: pdf,doc,xls,msg)"/>
+				<Title visible="{defaultValueModel>/AttachmentMaxOutText}" level="H3" text="{i18n>MaxAttchmentText}" />
+				<ToolbarSpacer/>
+				<u:FileUploader buttonOnly="true" useMultipart="false" buttonText=" " change="onUploadTrigger" icon="sap-icon://add" fileType="pdf,doc,xls,msg"
+					enabled="{defaultValueModel>/AttahmentUploadVisibility}" fileSizeExceed="onfileSizeExceed"
+					typeMissmatch="onTypeMissmatch"/>
+			</OverflowToolbar>
+		</toolbar>
+		<items>
+			<UploadCollectionItem documentId="{defaultValueModel>GUID}" url="{defaultValueModel>url}" fileName="{defaultValueModel>FileName}"
+				mimeType="{defaultValueModel>MIMEType}" visibleEdit="false" visibleDelete="{defaultValueModel>visibleAttachmentDelete}" />
+		</items>
+	</UploadCollection>
+</core:FragmentDefinition>
